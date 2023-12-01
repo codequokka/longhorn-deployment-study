@@ -1,0 +1,6 @@
+---
+- name: Deploy rancher servers
+  import_playbook: rancher.yml
+
+- name: Deploy k8s servers
+  import_playbook: k8s.yml
