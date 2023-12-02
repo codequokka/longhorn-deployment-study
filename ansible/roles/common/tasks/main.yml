@@ -4,8 +4,9 @@
   tags:
     - setup
     - setup_common
-# - name: Test common settings
-#   ansible.builtin.import_tasks: test.yml
-#   tags:
-#     - test
-#     - test_common
+
+- name: Test common settings
+  ansible.builtin.import_tasks: test.yml
+  tags:
+    - test
+    - test_common

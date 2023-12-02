@@ -1,7 +1,0 @@
----
-- name: Deploy K8s servers
-  hosts: k8s
-  become: true
-  roles:
-    - common
-    - geerlingguy.docker

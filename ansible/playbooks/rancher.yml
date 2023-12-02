@@ -1,8 +1,0 @@
----
-- name: Deploy rancher servers
-  hosts: rancher
-  become: true
-  roles:
-    - common
-    - geerlingguy.docker
-    - rancher

@@ -1,5 +1,5 @@
 ---
-- name: Deploy rancher containers
+- name: Deploy the docker container
   community.general.docker_container:
     name: rancher
     image: rancher/rancher:{{ rancher.version }}
@@ -10,14 +10,17 @@
     restart_policy: unless-stopped
     state: started
 
-- name: Get bootstrap password
+- name: Get the bootstrap password
   ansible.builtin.shell:
     cmd: |
       set -o pipefail
       docker logs rancher 2>&1 | grep "Bootstrap Password:"
   register: _bootstrap_password
+  until: _bootstrap_password.rc == 0
+  retries: 10
+  delay: 10
   changed_when: false
 
-- name: Show bootstrap password
+- name: Show the bootstrap password
   ansible.builtin.debug:
     msg: "{{ _bootstrap_password.stdout }}"

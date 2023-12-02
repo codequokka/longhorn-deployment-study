@@ -1,12 +1,12 @@
 ---
-- name: Set up rancher settings
+- name: Set up docker settings
   ansible.builtin.import_tasks: setup.yml
   tags:
     - setup
-    - setup_rancher
+    - setup_docker
 
-- name: Test rancher settings
+- name: Test docker settings
   ansible.builtin.import_tasks: test.yml
   tags:
     - test
-    - test_rancher
+    - test_docker

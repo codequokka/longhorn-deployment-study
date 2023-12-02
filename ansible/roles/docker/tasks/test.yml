@@ -1,0 +1,4 @@
+---
+- name: Test version lock
+  ansible.builtin.import_tasks: test/version_lock.yml
+  tags: test_docker_version_lock

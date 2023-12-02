@@ -3,6 +3,6 @@
   ansible.builtin.import_tasks: setup/kernel_modules.yml
   tags: setup_rancher_kernel_modules
 
-- name: Setup docker containers
-  ansible.builtin.import_tasks: setup/docker_containers.yml
-  tags: setup_rancher_docker
+- name: Setup the docker container
+  ansible.builtin.import_tasks: setup/docker_container.yml
+  tags: setup_rancher_docker_container

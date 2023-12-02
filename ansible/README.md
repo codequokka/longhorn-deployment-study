@@ -10,11 +10,27 @@ Starting galaxy role install process
 ```
 vscode@d13c36f91cab:/workspace/ansible$ cat .envrc
 export ANSIBLE_BECOME_PASS=<your ansible become pass>
+
+vscode@d13c36f91cab:/workspace/ansible$ source .envrc
 ```
 
 ```
-vscode@d13c36f91cab:/workspace/ansible$ ansible -m ping -i inventories/dev/hosts.ini rancher
-rancher-rocky-8-01 | SUCCESS => {
+vscode@d13c36f91cab:/workspace/ansible$ ansible -m ping -i inventories/dev/hosts.ini all
+rancher-k8s-ctrl-11 | SUCCESS => {
+    "ansible_facts": {
+        "discovered_interpreter_python": "/usr/libexec/platform-python"
+    },
+    "changed": false,
+    "ping": "pong"
+}
+rancher-server-11 | SUCCESS => {
+    "ansible_facts": {
+        "discovered_interpreter_python": "/usr/libexec/platform-python"
+    },
+    "changed": false,
+    "ping": "pong"
+}
+rancher-k8s-worker-11 | SUCCESS => {
     "ansible_facts": {
         "discovered_interpreter_python": "/usr/libexec/platform-python"
     },
@@ -24,12 +40,5 @@ rancher-rocky-8-01 | SUCCESS => {
 ```
 
 ```
-vscode@d13c36f91cab:/workspace/ansible$ ansible -m ping -i inventories/dev/hosts.ini rancher
-rancher-rocky-8-01 | SUCCESS => {
-    "ansible_facts": {
-        "discovered_interpreter_python": "/usr/libexec/platform-python"
-    },
-    "changed": false,
-    "ping": "pong"
-}
+
 ```

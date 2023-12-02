@@ -1,0 +1,8 @@
+---
+- name: Test kernel modules
+  ansible.builtin.import_tasks: test/kernel_modules.yml
+  tags: test_rancher_kernel_modules
+
+- name: Test the docker container
+  ansible.builtin.import_tasks: test/docker_container.yml
+  tags: test_rancher_docker_container

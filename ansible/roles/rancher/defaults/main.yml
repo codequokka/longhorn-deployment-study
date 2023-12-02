@@ -1,5 +1,7 @@
 ---
 rancher:
   version: v2.6.7
-  # os_packages:
-  #   update: true
+
+rancher_iptables_modules:
+  - iptable_nat
+  - iptable_filter

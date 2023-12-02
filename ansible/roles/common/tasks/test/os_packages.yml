@@ -1,0 +1,10 @@
+---
+- name: Check all OS packages are updated and upgraded
+  ansible.builtin.command:
+    cmd: "{{ cmd }}"
+  loop_control:
+    loop_var: cmd
+  loop:
+    - dnf check-update
+    - dnf check-upgrade
+  changed_when: false

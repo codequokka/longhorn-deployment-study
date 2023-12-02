@@ -1,0 +1,4 @@
+---
+- name: Setup version lock
+  ansible.builtin.import_tasks: setup/version_lock.yml
+  tags: setup_docker_version_lock

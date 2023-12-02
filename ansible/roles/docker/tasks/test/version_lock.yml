@@ -1,0 +1,22 @@
+---
+- name: Get the client version
+  ansible.builtin.command:
+    cmd: docker version --format \{\{.Client.Version\}\}
+  register: _client_version
+  changed_when: false
+
+- name: Get the server version
+  ansible.builtin.command:
+    cmd: docker version --format \{\{.Server.Version\}\}
+  register: _server_version
+  changed_when: false
+
+- name: Check client and server versions are as expected
+  ansible.builtin.assert:
+    that: "{{ version == docker_version }}"
+    quiet: true
+  loop_control:
+    loop_var: version
+  loop:
+    - "{{ _client_version.stdout }}"
+    - "{{ _server_version.stdout }}"

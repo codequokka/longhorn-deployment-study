@@ -1,0 +1,11 @@
+---
+- name: Check ports can be communicated with
+  ansible.builtin.uri:
+    url: "{{ url }}"
+    method: GET
+    validate_certs: false
+  loop_control:
+    loop_var: url
+  loop:
+    - http://rancher-server-11:80
+    - https://rancher-server-11:443

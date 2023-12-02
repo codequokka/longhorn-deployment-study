@@ -3,10 +3,14 @@
   ansible.builtin.import_tasks: setup/os_packages.yml
   tags: setup_common_os_packages
 
-- name: Setup hostname
+- name: Setup the hostname
   ansible.builtin.import_tasks: setup/hostname.yml
   tags: setup_common_hostname
 
-- name: Setup chronyd
+- name: Setup the chronyd
   ansible.builtin.import_tasks: setup/chronyd.yml
   tags: setup_common_chronyd
+
+- name: Setup the firewalld
+  ansible.builtin.import_tasks: setup/firewalld.yml
+  tags: setup_common_firewalld

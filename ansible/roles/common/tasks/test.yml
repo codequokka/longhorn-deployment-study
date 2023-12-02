@@ -1,0 +1,12 @@
+---
+- name: Test OS packages
+  ansible.builtin.import_tasks: test/os_packages.yml
+  tags: test_common_os_packages
+
+- name: Test the hostname
+  ansible.builtin.import_tasks: test/hostname.yml
+  tags: test_common_hostname
+
+- name: Test the chronyd
+  ansible.builtin.import_tasks: test/chronyd.yml
+  tags: test_common_chronyd

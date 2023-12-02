@@ -1,0 +1,13 @@
+---
+- name: Get the chronyc tracking system time
+  ansible.builtin.shell:
+    cmd: |
+      set -o pipefail
+      chronyc tracking | grep '^System time' | awk '{print $4}'
+  register: _chronyc_tracking_system_time
+  changed_when: false
+
+- name: Check the time difference from the synchronized server is less than 1s
+  ansible.builtin.assert:
+    that: "{{ _chronyc_tracking_system_time.stdout }} < 1"
+    quiet: true

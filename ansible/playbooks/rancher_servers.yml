@@ -1,0 +1,12 @@
+---
+- name: Deploy rancher servers
+  hosts: rancher_servers
+  become: true
+  roles:
+    - role: common
+    - role: geerlingguy.docker
+      tags:
+        - setup
+        - setup_docker
+    - role: docker
+    - role: rancher

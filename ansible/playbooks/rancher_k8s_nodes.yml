@@ -1,0 +1,11 @@
+---
+- name: Deploy K8s nodes
+  hosts: rancher_k8s_nodes
+  become: true
+  roles:
+    - role: common
+    - role: geerlingguy.docker
+      tags:
+        - setup
+        - setup_docker
+    - role: docker

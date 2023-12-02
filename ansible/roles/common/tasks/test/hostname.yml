@@ -1,0 +1,19 @@
+---
+- name: Get the hostname
+  ansible.builtin.command:
+    cmd: hostname
+  register: _hostname
+  changed_when: false
+
+- name: Check the host name is as expected
+  ansible.builtin.assert:
+    that: "{{ _hostname.stdout == inventory_hostname }}"
+    quiet: true
+
+- name: Check ping succeeds to all hosts
+  ansible.builtin.command:
+    cmd: ping {{ host }} -c 1
+  loop_control:
+    loop_var: host
+  loop: "{{ groups['all'] }}"
+  changed_when: false
